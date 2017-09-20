@@ -1,0 +1,10 @@
+                      
+db.getCollection('MapReduce_Practice').mapReduce(
+                     function() {
+                       emit(this.cust_id, this.price);
+                   },
+                     function(keyCustId, valuesPrices) {
+                          return Array.sum(valuesPrices);
+                      },
+                     { out: "map_reduce_example" }
+                   )

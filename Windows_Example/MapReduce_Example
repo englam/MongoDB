@@ -1,0 +1,30 @@
+db.getCollection('customers').mapReduce(
+        function Map() {
+            emit(
+            this.district,
+            {count:1,age:this.age}
+            )
+        },
+        
+        function Reduce(key,values){
+            var reduced = {count:0, age:0};
+            for (var idx=0; idx<values.length; idx++)
+            {
+                var val = values[idx];
+                reduced.age += val.age;
+                reduced.count += val.count;
+                }
+                return reduced;
+            },
+                                
+            {
+                out: {inline:1},
+                query:{city:"台北市"},
+                
+                finalize: function Finalize(key,reduced){
+                        reduced.aveAge = reduced.age/ reduced.count;
+                        return reduced;
+                    }
+            }
+
+)

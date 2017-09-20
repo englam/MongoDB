@@ -1,0 +1,57 @@
+
+for windows
+
+**********download path**********
+
+https://www.mongodb.com/download-center#community
+
+
+**********path**********
+解壓縮後，建立MnogoDB, 並把解壓縮的路徑叫mongodb
+C:\MongoDB\mongodb
+
+**********create log and dbpath , under (C:\MongoDB)**********
+
+\data\db
+\data\backup
+log
+
+**********create mongod, under (C:\MongoDB)**********
+create mongod.cfg
+
+edit mongod.cfg
+
+add:
+dbpath=C:\MongoDB\data\db
+logpath=C:\MongoDB\log\mongod.log
+
+
+**********Create mongodb service **********
+
+Start service:
+mongod --config "C:\MongoDB\mongod.cfg"
+
+再開啟robo即可
+
+
+**********Windows Administration**********
+
+cmd <===administration
+
+mongod --config "C:\MongoDB\mongod.cfg" -install
+
+
+
+**********Mongodb GUI**********
+
+RoBo 3T
+
+
+**********CLI**********
+mongo
+
+
+
+
+
+

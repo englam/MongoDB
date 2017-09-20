@@ -1,0 +1,12 @@
+db.getCollection('customers').mapReduce(
+                     function() {
+                       emit(this.district, this.age);
+                   },
+                     function(key, values) {
+                          return Array.sum(values);
+                      },
+                     
+                     { 
+                         query:{city:"台北市"},
+                         out: {inline:1} }
+                   )
